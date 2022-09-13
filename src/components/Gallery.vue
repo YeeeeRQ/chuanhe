@@ -1,4 +1,5 @@
 <template>
+  <div class="container"></div>
   <div class="title">
     <div class="back"></div>
     <div class="added"></div>
@@ -22,4 +23,19 @@
 
 <script lang="ts" setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.title {
+  border: 2px solid red;
+  height: 42px;
+}
+
+.toolbar {
+  border: 1px solid gold;
+  height: 42px;
+}
+
+// .library {
+//   border: 1px solid gray;
+//   height: 100%;
+// }
+</style>

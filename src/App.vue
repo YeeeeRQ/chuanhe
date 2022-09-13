@@ -1,10 +1,9 @@
-<script setup lang="ts">
-import Gallery from "./components/Gallery.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <!-- <div>Hello</div> -->
-  <Gallery></Gallery>
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <style scoped></style>
