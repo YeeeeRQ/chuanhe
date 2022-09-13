@@ -19,21 +19,127 @@
 
       <div class="library">
         <div class="collections">
-          <div class="collection">
-            <div class="collection-image">
-              <img src="../assets/pic1.png" alt="" />
-              <div class="image-identification"></div>
-            </div>
+          <div class="collection-wrapper">
+            <div class="collection">
+              <div class="collection-image-wrapper">
+                <img class="collection-image" src="../assets/pic1.png" alt="" />
+                <div class="image-desc">永远的女神#15</div>
+                <div class="tags">
+                  <img
+                    class="tag"
+                    :src="myRequire('../../images/tag1')"
+                    alt=""
+                  />
+                  <img
+                    class="atlas"
+                    :src="myRequire('../../images/atlas')"
+                    alt=""
+                  />
+                  <img
+                    class="is-cast"
+                    :src="myRequire('../../images/cast')"
+                    alt=""
+                  />
+                  <img
+                    class="is-exchange"
+                    :src="myRequire('../../images/exchange')"
+                    alt=""
+                  />
+                </div>
+              </div>
 
-            <div class="identification">
-              <span class="collection-id">#100</span>
-              <span class="collection-tag">
-                <img :src="myRequire('../../images/2d')" alt="" />
-              </span>
-            </div>
+              <div class="identification">
+                <span class="collection-id">#100</span>
+                <span class="collection-tag">
+                  <img :src="myRequire('../../images/2d')" alt="" />
+                </span>
+              </div>
 
-            <div class="operation">
-              <span class="collection-remove">下架</span>
+              <div class="operation">
+                <span class="collection-remove">下架</span>
+              </div>
+            </div>
+          </div>
+          <div class="collection-wrapper">
+            <div class="collection">
+              <div class="collection-image-wrapper">
+                <img class="collection-image" src="../assets/pic1.png" alt="" />
+                <div class="image-desc">永远的女神#15</div>
+                <div class="tags">
+                  <img
+                    class="tag"
+                    :src="myRequire('../../images/tag1')"
+                    alt=""
+                  />
+                  <img
+                    class="atlas"
+                    :src="myRequire('../../images/atlas')"
+                    alt=""
+                  />
+                  <img
+                    class="is-cast"
+                    :src="myRequire('../../images/cast')"
+                    alt=""
+                  />
+                  <img
+                    class="is-exchange"
+                    :src="myRequire('../../images/exchange')"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div class="identification">
+                <span class="collection-id">#100</span>
+                <span class="collection-tag">
+                  <img :src="myRequire('../../images/2d')" alt="" />
+                </span>
+              </div>
+
+              <div class="operation">
+                <span class="collection-remove">下架</span>
+              </div>
+            </div>
+          </div>
+          <div class="collection-wrapper">
+            <div class="collection">
+              <div class="collection-image-wrapper">
+                <img class="collection-image" src="../assets/pic1.png" alt="" />
+                <div class="image-desc">永远的女神#15</div>
+                <div class="tags">
+                  <img
+                    class="tag"
+                    :src="myRequire('../../images/tag1')"
+                    alt=""
+                  />
+                  <img
+                    class="atlas"
+                    :src="myRequire('../../images/atlas')"
+                    alt=""
+                  />
+                  <img
+                    class="is-cast"
+                    :src="myRequire('../../images/cast')"
+                    alt=""
+                  />
+                  <img
+                    class="is-exchange"
+                    :src="myRequire('../../images/exchange')"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div class="identification">
+                <span class="collection-id">#100</span>
+                <span class="collection-tag">
+                  <img :src="myRequire('../../images/2d')" alt="" />
+                </span>
+              </div>
+
+              <div class="operation">
+                <span class="collection-remove">下架</span>
+              </div>
             </div>
           </div>
         </div>
@@ -152,27 +258,86 @@ const myRequire = (name: string) => {
     // border: 1px solid #fff;
     flex: 1;
     .collections {
-      height: 100%;
       display: flex;
       flex-wrap: wrap;
-      border: 1px solid #fff;
+      // border: 1px solid #fff;
+
+      .collection-wrapper {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
       .collection {
-        outline: 1px solid #fff;
+        box-sizing: border-box;
+
+        // outline: 1px solid #fff;
+        position: relative;
         width: 182px;
         height: 226px;
-        // background: url(10.png);
-        .collection-image {
+
+        .collection-image-wrapper {
+          position: relative;
+          display: flow-root;
+          line-height: 0;
+        }
+        img.collection-image {
           // outline: 1px solid #fff;
+          // box-sizing: border-box;
           width: 182px;
           height: 182px;
           border-radius: 10%;
-          > img {
-            background-color: antiquewhite;
-            min-width: 100px;
-            min-height: 100px;
-            width: 100%;
-            height: 100%;
-            border-radius: 10%;
+          background-color: #fff;
+        }
+        .image-desc {
+          height: 40px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          background-image: linear-gradient(
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.8)
+          );
+          padding-bottom: 5px;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 18px;
+        }
+        .tags {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          > img.tag {
+            width: 48px;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+          }
+          > img.atlas {
+            width: 25px;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+          }
+          > img.is-cast {
+            width: 29px;
+            position: absolute;
+            right: 0;
+            bottom: 30px;
+          }
+          > img.is-exchange {
+            width: 29px;
+            position: absolute;
+            right: 0;
+            bottom: 60px;
           }
         }
         > .identification {
