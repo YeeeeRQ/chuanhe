@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>
+  <div class="wrapper">
     <router-view />
   </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped></style>
