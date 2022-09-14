@@ -7,12 +7,20 @@
         <div class="tags">
           <img class="tag" :src="myRequire('../../images/tag1')" alt="" />
           <img class="atlas" :src="myRequire('../../images/atlas')" alt="" />
-          <img
-            class="is-exchange"
-            :src="myRequire('../../images/exchange')"
-            alt=""
-          />
-          <img class="is-cast" :src="myRequire('../../images/cast')" alt="" />
+          <div class="right-tags">
+            <div class="right-tags-wrapper">
+              <img
+                class="is-cast"
+                :src="myRequire('../../images/cast')"
+                alt=""
+              />
+              <img
+                class="is-exchange"
+                :src="myRequire('../../images/exchange')"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -93,17 +101,17 @@ import { myRequire } from "../utils";
       top: 6px;
       right: 6px;
     }
-    > img.is-cast {
-      width: 29px;
+    > .right-tags {
       position: absolute;
       right: 0;
       bottom: 36px;
-    }
-    > img.is-exchange {
-      width: 29px;
-      position: absolute;
-      right: 0;
-      bottom: 63px;
+      > .right-tags-wrapper {
+        display: flex;
+        flex-direction: column;
+        > img {
+          width: 29px;
+        }
+      }
     }
   }
   > .identification {
