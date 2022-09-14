@@ -2,8 +2,7 @@
   <div class="gallery-wrapper">
     <div class="toolbar">
       <span class="back">
-        <span class="back-rect"></span>
-        <span class="back-rect"></span>
+        <span class="back-icon"></span>
       </span>
       <span class="title">数字藏品</span>
       <span class="collection-add">上架</span>
@@ -170,29 +169,18 @@ const myRequire = (name: string) => {
   background: rgba(120, 120, 120, 0.1);
   .back {
     width: 44px;
-    // display: flex;
-    // flex-direction: column;
-    .back-rect:first-child {
-      position: absolute;
-      width: 2.15px;
-      height: 12.64px;
-      top: 21.94px;
-      left: 16.54px;
-
-      background: rgb(255, 255, 255);
-      border-radius: 24px;
-      transform: rotate(-135deg);
-    }
-    .back-rect:last-child {
-      position: absolute;
-      width: 2.15px;
-      height: 12.64px;
-      top: 12.94px;
-      left: 17.94px;
-
-      background: rgb(255, 255, 255);
-      border-radius: 23px;
-      transform: rotate(-45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .back-icon {
+      content: "";
+      display: inline-block;
+      height: 13px;
+      width: 13px;
+      border-width: 0px 0px 2px 2px;
+      border-color: #fff;
+      border-style: solid;
+      transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
     }
   }
   .title {
