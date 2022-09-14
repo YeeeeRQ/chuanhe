@@ -1,15 +1,22 @@
 <template>
   <div class="toolbar">
-    <span class="back">
+    <span class="back" @click="back">
       <span class="back-icon"></span>
     </span>
     <span class="title">数字藏品</span>
-    <Button class="collection-add">上架</Button>
+    <Button class="collection-add" @click="addCollection">上架</Button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import Button from "./Button";
+
+const back = () => {
+  window.alert("回退");
+};
+const addCollection = () => {
+  window.alert("上架");
+};
 </script>
 
 <style lang="scss" scoped>

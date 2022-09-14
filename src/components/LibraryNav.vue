@@ -1,12 +1,43 @@
 <template>
   <div class="library-nav">
-    <span class="category">藏品</span>
-    <span class="category">头像</span>
-    <span class="category">盲盒</span>
-    <span class="category active">其他</span>
+    <span
+      class="category"
+      v-for="(item, index) in categoryList"
+      :key="item.id"
+      :class="{ active: selectFlag[index] }"
+      @click="select(index, item.id)"
+      >{{ item.name }}</span
+    >
   </div>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { reactive } from "vue";
+
+type categoryItem = {
+  name: string;
+  id: number;
+};
+interface Props {
+  categoryList: categoryItem[];
+}
+const props = defineProps<Props>();
+
+const selectFlag: boolean[] = reactive(new Array(props.categoryList.length));
+if (selectFlag.length > 0) {
+  selectFlag[0] = true;
+}
+
+const select = (index: number, id: number) => {
+  console.log("selectID: " + id);
+  for (let i = 0; i < selectFlag.length; i++) {
+    if (selectFlag[i]) {
+      selectFlag[i] = false;
+      break;
+    }
+  }
+  selectFlag[index] = true;
+};
+</script>
 
 <style lang="scss" scoped>
 .library-nav {

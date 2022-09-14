@@ -1,9 +1,8 @@
 <template>
   <div class="gallery-wrapper">
     <Toolbar />
-
     <div class="library-wrapper">
-      <LibraryNav />
+      <LibraryNav :category-list="categoryList" />
       <div class="library">
         <div class="collections">
           <Collection />
@@ -16,9 +15,29 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from "vue";
 import Collection from "./Collection.vue";
 import LibraryNav from "./LibraryNav.vue";
 import Toolbar from "./Toolbar.vue";
+
+let categoryList = [
+  {
+    name: "藏品",
+    id: 1,
+  },
+  {
+    name: "头像",
+    id: 2,
+  },
+  {
+    name: "盲盒",
+    id: 3,
+  },
+  {
+    name: "其他",
+    id: 4,
+  },
+];
 </script>
 
 <style lang="scss" scoped>
@@ -36,12 +55,10 @@ import Toolbar from "./Toolbar.vue";
   flex: 1;
 
   > .library {
-    // border: 1px solid #fff;
     flex: 1;
     .collections {
       display: flex;
       flex-wrap: wrap;
-      // border: 1px solid #fff;
     }
   }
 }
