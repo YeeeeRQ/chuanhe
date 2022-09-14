@@ -117,13 +117,13 @@
                     alt=""
                   />
                   <img
-                    class="is-cast"
-                    :src="myRequire('../../images/cast')"
+                    class="is-exchange"
+                    :src="myRequire('../../images/exchange')"
                     alt=""
                   />
                   <img
-                    class="is-exchange"
-                    :src="myRequire('../../images/exchange')"
+                    class="is-cast"
+                    :src="myRequire('../../images/cast')"
                     alt=""
                   />
                 </div>
@@ -239,6 +239,7 @@ const myRequire = (name: string) => {
         border-bottom: 3px solid rgb(78, 159, 255);
         border-radius: 19px;
         margin: 0 auto;
+        margin-top: 2px;
       }
     }
   }
@@ -259,7 +260,6 @@ const myRequire = (name: string) => {
       .collection {
         box-sizing: border-box;
 
-        // outline: 1px solid #fff;
         position: relative;
         width: 182px;
         height: 226px;
@@ -270,12 +270,9 @@ const myRequire = (name: string) => {
           line-height: 0;
         }
         img.collection-image {
-          // outline: 1px solid #fff;
-          // box-sizing: border-box;
           width: 182px;
           height: 182px;
           border-radius: 10%;
-          background-color: #fff;
         }
         .image-desc {
           height: 40px;
@@ -319,13 +316,13 @@ const myRequire = (name: string) => {
             width: 29px;
             position: absolute;
             right: 0;
-            bottom: 30px;
+            bottom: 36px;
           }
           > img.is-exchange {
             width: 29px;
             position: absolute;
             right: 0;
-            bottom: 60px;
+            bottom: 63px;
           }
         }
         > .identification {
