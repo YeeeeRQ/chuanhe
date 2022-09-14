@@ -10,7 +10,7 @@
     <div class="collections">
       <Collection
         v-for="item in currentCollections"
-        :key="'' + item.category_id + item.id"
+        :key="item.category_id + '-' + item.id"
         :collect="item"
       />
     </div>
