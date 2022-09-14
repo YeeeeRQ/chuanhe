@@ -7,7 +7,7 @@ Mock.setup({
 
 Mock.mock("/v1/data/getDataList", {
   code: 0,
-  "data|10-20": [
+  "data|20-30": [
     {
       "id|10-300": 129, // 编号
       "category_id|1-4": 1, // 分类ID

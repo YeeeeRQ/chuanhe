@@ -1,20 +1,20 @@
 <template>
   <div class="gallery-wrapper">
     <Toolbar />
-    <div class="library-wrapper">
-      <LibraryNav
-        :category-list="categoryList"
-        @select="(id) => (selectedCategoryID = id)"
+    <LibraryNav
+      :category-list="categoryList"
+      @select="(id) => (selectedCategoryID = id)"
+    />
+    <!-- <div class="library-wrapper">
+    </div> -->
+  </div>
+  <div class="library">
+    <div class="collections">
+      <Collection
+        v-for="item in currentCollections"
+        :key="'' + item.category_id + item.id"
+        :collect="item"
       />
-      <div class="library">
-        <div class="collections">
-          <Collection
-            v-for="item in currentCollections"
-            :key="'' + item.category_id + item.id"
-            :collect="item"
-          />
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -81,6 +81,7 @@ watch(selectedCategoryID, (newID) => {
 
 <style lang="scss" scoped>
 .gallery-wrapper {
+  // overflow-y: auto;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -92,13 +93,18 @@ watch(selectedCategoryID, (newID) => {
   display: flex;
   flex-direction: column;
   flex: 1;
-
-  > .library {
-    flex: 1;
-    .collections {
-      display: flex;
-      flex-wrap: wrap;
-    }
+}
+.library {
+  overflow-y: auto;
+  position: absolute;
+  left: 0;
+  top: 103px;
+  bottom: 0;
+  right: 0;
+  padding: 0 0.18rem 0.3rem 0.18rem;
+  .collections {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>

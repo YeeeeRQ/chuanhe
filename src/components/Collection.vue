@@ -2,28 +2,32 @@
   <div class="collection-wrapper">
     <div class="collection">
       <div class="collection-image-wrapper">
-        <img class="collection-image" :src="collectionImg" alt="" />
+        <img class="collection-image" :src="myRequire(collectionImg)" alt="" />
         <div class="image-desc">{{ collect.name }}</div>
         <div class="tags">
           <img
-            :class="{ tag: collect.tag }"
+            v-if="collect.tag"
+            class="tag"
             :src="myRequire('../../images/tag1')"
             alt=""
           />
           <img
-            :class="{ atlas: collect.atlas }"
+            v-if="collect.atlas"
+            class="atlas"
             :src="myRequire('../../images/atlas')"
             alt=""
           />
           <div class="right-tags">
             <div class="right-tags-wrapper">
               <img
-                :class="{ 'is-cast': collect.isCast }"
+                v-if="collect.isCast"
+                class="is-cast"
                 :src="myRequire('../../images/cast')"
                 alt=""
               />
               <img
-                :class="{ 'is-exchange': collect.isExchange }"
+                v-if="collect.isExchange"
+                class="is-exchange"
                 :src="myRequire('../../images/exchange')"
                 alt=""
               />
@@ -33,14 +37,14 @@
       </div>
 
       <div class="identification">
-        <span class="collection-id">{{ collect.id }}</span>
+        <span class="collection-id">{{ "#" + collect.id }}</span>
         <span class="collection-tag">
           <img :src="myRequire('../../images/2d')" alt="" />
         </span>
       </div>
 
       <div class="operation">
-        <Button class="collection-remove">下架</Button>
+        <Button class="collection-remove" @click="onRemove">下架</Button>
       </div>
     </div>
   </div>
@@ -57,8 +61,13 @@ const props = defineProps<{
 
 let collectionImg = ref("");
 onMounted(() => {
-  collectionImg.value = "../assets/" + props.collect.img;
+  collectionImg.value = "../assets/" + props.collect.img.slice(0, -4);
 });
+
+const onRemove = () => {
+  const alertStr = "#" + props.collect.id + "下架";
+  window.alert(alertStr);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -67,13 +76,20 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+  color: #fff;
 }
 .collection {
   box-sizing: border-box;
 
   position: relative;
-  width: 182px;
-  height: 226px;
+
+  max-width: 182px;
+  max-height: 226px;
+  @media only screen and (max-width: 400px) {
+    margin-top: 5px;
+    max-width: 140px;
+    max-height: 173px;
+  }
 
   .collection-image-wrapper {
     position: relative;
@@ -81,9 +97,13 @@ onMounted(() => {
     line-height: 0;
   }
   img.collection-image {
-    width: 182px;
-    height: 182px;
+    max-width: 182px;
+    max-height: 182px;
     border-radius: 10%;
+    @media only screen and (max-width: 400px) {
+      max-width: 140px;
+      max-height: 173px;
+    }
   }
   .image-desc {
     height: 40px;
