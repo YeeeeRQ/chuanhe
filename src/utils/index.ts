@@ -1,6 +1,6 @@
 //自定义require方法
-const myRequire = (name: string) => {
+const xRequire = (name: string) => {
   return new URL(`/src/assets/${name}.png`, import.meta.url).href;
 };
 
-export { myRequire };
+export { xRequire as myRequire };

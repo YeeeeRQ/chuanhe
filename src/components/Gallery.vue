@@ -5,8 +5,6 @@
       :category-list="categoryList"
       @select="(id) => (selectedCategoryID = id)"
     />
-    <!-- <div class="library-wrapper">
-    </div> -->
   </div>
   <div class="library">
     <div class="collections">
@@ -24,10 +22,10 @@ import Toolbar from "./Toolbar.vue";
 import LibraryNav from "./LibraryNav.vue";
 import Collection from "./Collection.vue";
 import { onMounted, reactive, ref, watch } from "vue";
-import axios from "axios";
 import { CollectionList } from "./type";
+import axios from "axios";
 
-let categoryList = [
+const categoryList = [
   {
     name: "藏品",
     id: 1,
@@ -46,12 +44,11 @@ let categoryList = [
   },
 ];
 
-const selectedCategoryID = ref();
-
+/* 藏品展示 */
 let collections: CollectionList = [];
 let currentCollections: CollectionList = reactive([]);
 
-const loadCollection = (id: number) => {
+const loadCurrentCollection = (id: number) => {
   console.log("loadCollection:", id);
   while (currentCollections.pop());
 
@@ -64,18 +61,24 @@ const loadCollection = (id: number) => {
     });
   console.log(currentCollections);
 };
+
 onMounted(async () => {
   const url = "/v1/data/getDataList";
   const { data: res } = await axios.get(url);
+  if (res.code !== 0) {
+    window.alert("载入藏品失败！请刷新重试");
+    return;
+  }
   collections = res.data;
   console.log(res.data);
   // 载入藏品
-  loadCollection(categoryList[0].id); //init
+  loadCurrentCollection(categoryList[0].id); //init
 });
 
+const selectedCategoryID = ref();
 watch(selectedCategoryID, (newID) => {
   console.log("watch");
-  loadCollection(newID);
+  loadCurrentCollection(newID);
 });
 </script>
 

@@ -2,7 +2,13 @@
   <div class="collection-wrapper">
     <div class="collection">
       <div class="collection-image-wrapper">
-        <img class="collection-image" :src="myRequire(collectionImg)" alt="" />
+        <div class="collection-image-mask">
+          <img
+            class="collection-image"
+            :src="myRequire(collectionImg)"
+            alt=""
+          />
+        </div>
         <div class="image-desc">{{ collect.name }}</div>
         <div class="tags">
           <img
@@ -55,6 +61,7 @@ import { onMounted, ref } from "vue";
 import { myRequire } from "../utils";
 import Button from "./Button";
 import { CollectionItem } from "./type";
+
 const props = defineProps<{
   collect: CollectionItem;
 }>();
@@ -96,7 +103,19 @@ const onRemove = () => {
     display: flow-root;
     line-height: 0;
   }
+
   img.collection-image {
+    max-width: 182px;
+    max-height: 182px;
+    border-radius: 10%;
+    @media only screen and (max-width: 400px) {
+      max-width: 140px;
+      max-height: 173px;
+    }
+  }
+  .collection-image-mask {
+    background-color: #000;
+    opacity: 0.8;
     max-width: 182px;
     max-height: 182px;
     border-radius: 10%;
