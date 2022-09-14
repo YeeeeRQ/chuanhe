@@ -3,24 +3,20 @@
     <div class="collection">
       <div class="collection-image-wrapper">
         <div class="collection-image-mask">
-          <img
-            class="collection-image"
-            :src="myRequire(collectionImg)"
-            alt=""
-          />
+          <img class="collection-image" :src="xRequire(collect.img)" alt="" />
         </div>
         <div class="image-desc">{{ collect.name }}</div>
         <div class="tags">
           <img
             v-if="collect.tag"
             class="tag"
-            :src="myRequire('../../images/tag1')"
+            :src="xRequire('tag1.png')"
             alt=""
           />
           <img
             v-if="collect.atlas"
             class="atlas"
-            :src="myRequire('../../images/atlas')"
+            :src="xRequire('atlas.png')"
             alt=""
           />
           <div class="right-tags">
@@ -28,13 +24,13 @@
               <img
                 v-if="collect.isCast"
                 class="is-cast"
-                :src="myRequire('../../images/cast')"
+                :src="xRequire('cast.png')"
                 alt=""
               />
               <img
                 v-if="collect.isExchange"
                 class="is-exchange"
-                :src="myRequire('../../images/exchange')"
+                :src="xRequire('exchange.png')"
                 alt=""
               />
             </div>
@@ -45,7 +41,7 @@
       <div class="identification">
         <span class="collection-id">{{ "#" + collect.id }}</span>
         <span class="collection-tag">
-          <img :src="myRequire('../../images/2d')" alt="" />
+          <img :src="xRequire('2d.png')" alt="" />
         </span>
       </div>
 
@@ -57,19 +53,13 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { myRequire } from "../utils";
+import { xRequire } from "../utils";
 import Button from "./Button";
 import { CollectionItem } from "./type";
 
 const props = defineProps<{
   collect: CollectionItem;
 }>();
-
-let collectionImg = ref("");
-onMounted(() => {
-  collectionImg.value = "../assets/" + props.collect.img.slice(0, -4);
-});
 
 const onRemove = () => {
   const alertStr = "#" + props.collect.id + "下架";
