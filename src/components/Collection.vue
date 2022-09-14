@@ -95,6 +95,8 @@ const onRemove = () => {
   }
 
   img.collection-image {
+    min-width: 140px;
+    min-height: 140px;
     max-width: 182px;
     max-height: 182px;
     border-radius: 10%;
