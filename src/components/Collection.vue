@@ -32,7 +32,7 @@
       </div>
 
       <div class="operation">
-        <span class="collection-remove">下架</span>
+        <Button class="collection-remove">下架</Button>
       </div>
     </div>
   </div>
@@ -40,6 +40,7 @@
 
 <script lang="ts" setup>
 import { myRequire } from "../utils";
+import Button from "./Button";
 </script>
 
 <style lang="scss" scoped>
@@ -134,10 +135,14 @@ import { myRequire } from "../utils";
 
   .operation {
     display: flow-root;
+
     > .collection-remove {
+      border: none;
+      color: #fff;
+
       box-sizing: border-box;
       float: right;
-      background: rgb(227, 81, 81);
+      background-color: rgb(227, 81, 81);
       border-radius: 4px;
       margin: 1px 0px 1px 0px;
       padding: 2px 11px;
@@ -145,6 +150,10 @@ import { myRequire } from "../utils";
       font-weight: 400;
       line-height: 13px;
       text-align: center;
+
+      &:active {
+        background-color: rgba(227, 81, 81, 0.8);
+      }
     }
   }
 }
