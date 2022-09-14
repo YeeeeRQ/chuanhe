@@ -1,3 +1,10 @@
+
+# 说明
+
+2D 3D的图标，需求中没有明确说明，接口数据也没有提供，我默认就放2D的图了
+
+设备宽度在 320px - 425px 之间 都可正常展示
+
 # Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
