@@ -8,9 +8,11 @@
       />
       <div class="library">
         <div class="collections">
-          <Collection />
-          <Collection />
-          <Collection />
+          <Collection
+            v-for="item in currentCollections"
+            :key="'' + item.category_id + item.id"
+            :collect="item"
+          />
         </div>
       </div>
     </div>
@@ -21,8 +23,9 @@
 import Toolbar from "./Toolbar.vue";
 import LibraryNav from "./LibraryNav.vue";
 import Collection from "./Collection.vue";
-import { onMounted, ref, watch } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
 import axios from "axios";
+import { CollectionList } from "./type";
 
 let categoryList = [
   {
@@ -43,16 +46,36 @@ let categoryList = [
   },
 ];
 
+const selectedCategoryID = ref();
+
+let collections: CollectionList = [];
+let currentCollections: CollectionList = reactive([]);
+
+const loadCollection = (id: number) => {
+  console.log("loadCollection:", id);
+  while (currentCollections.pop());
+
+  collections
+    .filter((item) => {
+      return item.category_id === id;
+    })
+    .forEach((item) => {
+      currentCollections.push(item);
+    });
+  console.log(currentCollections);
+};
 onMounted(async () => {
   const url = "/v1/data/getDataList";
   const { data: res } = await axios.get(url);
+  collections = res.data;
   console.log(res.data);
+  // 载入藏品
+  loadCollection(categoryList[0].id); //init
 });
 
-const selectedCategoryID = ref();
 watch(selectedCategoryID, (newID) => {
-  // filter
-  // show
+  console.log("watch");
+  loadCollection(newID);
 });
 </script>
 

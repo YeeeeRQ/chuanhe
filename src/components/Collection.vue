@@ -2,20 +2,28 @@
   <div class="collection-wrapper">
     <div class="collection">
       <div class="collection-image-wrapper">
-        <img class="collection-image" src="../assets/pic1.png" alt="" />
-        <div class="image-desc">永远的女神#15</div>
+        <img class="collection-image" :src="collectionImg" alt="" />
+        <div class="image-desc">{{ collect.name }}</div>
         <div class="tags">
-          <img class="tag" :src="myRequire('../../images/tag1')" alt="" />
-          <img class="atlas" :src="myRequire('../../images/atlas')" alt="" />
+          <img
+            :class="{ tag: collect.tag }"
+            :src="myRequire('../../images/tag1')"
+            alt=""
+          />
+          <img
+            :class="{ atlas: collect.atlas }"
+            :src="myRequire('../../images/atlas')"
+            alt=""
+          />
           <div class="right-tags">
             <div class="right-tags-wrapper">
               <img
-                class="is-cast"
+                :class="{ 'is-cast': collect.isCast }"
                 :src="myRequire('../../images/cast')"
                 alt=""
               />
               <img
-                class="is-exchange"
+                :class="{ 'is-exchange': collect.isExchange }"
                 :src="myRequire('../../images/exchange')"
                 alt=""
               />
@@ -25,7 +33,7 @@
       </div>
 
       <div class="identification">
-        <span class="collection-id">#100</span>
+        <span class="collection-id">{{ collect.id }}</span>
         <span class="collection-tag">
           <img :src="myRequire('../../images/2d')" alt="" />
         </span>
@@ -39,8 +47,18 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted, ref } from "vue";
 import { myRequire } from "../utils";
 import Button from "./Button";
+import { CollectionItem } from "./type";
+const props = defineProps<{
+  collect: CollectionItem;
+}>();
+
+let collectionImg = ref("");
+onMounted(() => {
+  collectionImg.value = "../assets/" + props.collect.img;
+});
 </script>
 
 <style lang="scss" scoped>
