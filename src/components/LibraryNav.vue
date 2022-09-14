@@ -27,8 +27,13 @@ if (selectFlag.length > 0) {
   selectFlag[0] = true;
 }
 
+const emit = defineEmits<{
+  (e: "select", id: number): void;
+}>();
+
 const select = (index: number, id: number) => {
-  console.log("selectID: " + id);
+  emit("select", id);
+  // console.log("selectID: " + id);
   for (let i = 0; i < selectFlag.length; i++) {
     if (selectFlag[i]) {
       selectFlag[i] = false;
